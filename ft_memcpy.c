@@ -14,8 +14,8 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t size)
 {
-	void	*dest_temp;
-	void	*src_temp;
+	unsigned char	*dest_temp;
+	unsigned char	*src_temp;
 
 	if (!src && !dest)
 		return (dest);
@@ -28,7 +28,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	}
 	return (dest);
 }
-
+/*
 #include <stdio.h>
 
 int main() {
@@ -43,3 +43,4 @@ int main() {
 
     return 0;
 }
+*/

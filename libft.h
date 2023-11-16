@@ -39,11 +39,13 @@ size_t	ft_strlen(const char *str);
 
 void	*ft_memset(void *pointer, int value, size_t count);
 
+void	*ft_memcpy(void *dest, const void *src, size_t size);
+
 void	ft_bzero(void *pointer, size_t count);
 
 //char	*ft_strcpy(char *dest, const char *src);
 
-size_t	strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 char	*ft_strdup(const char *str);
 

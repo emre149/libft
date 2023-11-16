@@ -14,27 +14,54 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 EXEC = prog
-SRC = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
+SRCS = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 		ft_isprint.c ft_strchr.c ft_strrchr.c ft_strlen.c ft_tolower.c \
-		ft_toupper.c ft_memset.c ft_strdup ft_putchar_fd ft_putstr_fd \
-		ft_putendl_fd ft_main.c
+		ft_toupper.c ft_memset.c ft_strdup.c ft_putchar_fd.c ft_putstr_fd.c \
+		ft_putendl_fd.c ft_strlcpy.c ft_bzero.c ft_memset.c ft_memcpy.c \
+		ft_main.c
 
-OBJ = $(SRC:.c=.o)
+BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+			ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-all : $(EXEC)
+MAIN	=	main.c
 
-%.o : %.c
-	$(CC) -o $@ -c $<
+OBJB	=	$(BONUS:.c=.o)
 
-$(EXEC) : $(OBJ)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ)
+OBJM	=	$(MAIN:.c=.o)
 
-clean : 
-	rm -rf *.o
+TNAME	= 	test
 
-fclean : clean
-	rm -rf prog
+OBJS 	= 	$(SRCS:.c=.o)
 
-re : fclean all
+NAME	= 	libft.a
 
-.PHONY:	all clean fclean re
+CC		= 	clang
+CFLAGS	= 	-Wall -Wextra -Werror
+
+AR		= 	ar rc
+
+RM		= 	rm -f
+
+.c.o: #equivalent a %.o: %.c
+			$(CC) $(CFLAGS) -o $(<:.c=.o) -c $<
+
+$(NAME):	$(OBJS)
+			$(AR) $(NAME) $(OBJS)
+
+test:		$(NAME) bonus
+			$(CC) $(CFLAGS) -o $(TNAME) $(MAIN) -L. -lft
+
+all:		$(NAME)
+
+bonus:		$(OBJB)
+			$(AR) $(NAME) $(OBJB)
+
+clean:
+			$(RM) $(OBJS) $(OBJM) $(OBJB)
+
+fclean:		clean
+			$(RM) $(NAME) $(TNAME)
+
+re:			fclean all
+
+.PHONY:		all clean fclean re test
