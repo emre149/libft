@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:17:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/09 17:39:20 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:53:13 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 
 void	ft_putendl_fd(char *str, int fd);
+
+void	*ft_memmove(void *dest, const void *src, size_t len);
 
 #endif
