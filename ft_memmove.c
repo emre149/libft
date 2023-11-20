@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:22:42 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/20 20:06:55 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:21:41 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	char	*dest_temp;
-	char	*src_temp;
+	unsigned char	*dest_temp;
+	unsigned char	*src_temp;
 	size_t			i;
 
 	i = 0;
@@ -28,8 +28,11 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 			dest_temp[len] = src_temp[len];
 	else
 	{
-		while (i++ < len)
+		while (i < len)
+		{
 			dest_temp[i] = src_temp[i];
+			i++;
+		}
 	}
 	return (dest);
 }
