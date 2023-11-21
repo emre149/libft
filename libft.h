@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:17:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/20 18:53:13 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/21 03:02:24 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@ void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *str, int fd);
 
 void	*ft_memmove(void *dest, const void *src, size_t len);
+
+void	*ft_calloc(size_t count, size_t size);
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 #endif
