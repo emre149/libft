@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:14:16 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/21 00:56:30 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:12:01 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
+/*
 #include <stdio.h>
 
 int	main()
@@ -44,3 +44,4 @@ int	main()
 
 	printf("%s", ft_strnstr(hay, need, 15));
 }
+*/

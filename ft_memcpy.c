@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:05:23 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/10 16:58:44 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:40:35 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	unsigned char	*dest_temp;
 	unsigned char	*src_temp;
 
-	if (!src && !dest)
-		return (dest);
+	if (size == 0 && !dest)
+		return (NULL);
 	dest_temp = (unsigned char *)dest;
 	src_temp = (unsigned char *)src;
 	while (size > 0)
@@ -30,13 +30,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 }
 /*
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    char source[] = "Bonjour!";
-    char destination[20];
+    char source[] = "";
+    char destination[0];
 
     // Utilisez votre fonction my_memcpy ici
     ft_memcpy(destination, source, ft_strlen(source) + 1);
+	memcpy(destination, source, ft_strlen(source) + 1);
 
     printf("Source: %s\n", source);
     printf("Destination: %s\n", destination);

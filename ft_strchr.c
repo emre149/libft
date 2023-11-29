@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:57:09 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/08 13:43:31 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:33:10 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ char	*ft_strchr(const char *str, int searchedChar)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == searchedChar || (!str[i] && str[i] == '\0'))
+		if ((char)str[i] == (char)searchedChar)
 		{
 			return ((char *)&str[i]);
 		}
 		i++;
 	}
-	return (0);
+	if ((char)searchedChar == (char)str[i])
+		return ((char *)&str[i]);
+	return (NULL);
 }
