@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:17:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/21 03:02:24 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:18:28 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
 
 #endif

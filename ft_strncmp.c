@@ -6,9 +6,11 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 03:36:41 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/21 03:59:59 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:20:16 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -19,6 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		if ((unsigned char)s1[i] != (unsigned char)s2[i])
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
 	return (0);
 }
