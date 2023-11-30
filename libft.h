@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:17:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/29 19:18:28 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:21:35 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
+void	*ft_memchr(const void *str, int searchedChar, size_t n);
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
