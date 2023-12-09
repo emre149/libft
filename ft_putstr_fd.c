@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:24:37 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/09 17:35:34 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:03:01 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr_fd(char *str, int fd)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		write(fd, &str[i], 1);
 		i++;

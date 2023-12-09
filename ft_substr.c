@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:24:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/11/30 17:54:06 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/12/01 16:02:38 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	const char	*new;
-	const char	*temp;
-	unsigned int		i;
-
-	i = 0;
-	new = malloc(sizeof(char) * len);
+	char		*new;
+	unsigned int	i;
+	size_t			len_s;
+/*si len + start > strlen(s)
+	len = strlen(s) - start*/
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (start > len_s)
+		return (ft_strdup(""));
+	if ((len + start) > len_s)
+		len = ft_strlen(s) - start;
+	new = malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);
-	while (s[i] && i < len)
+	i = start;
+	while (s[i] && i - start < len)
 	{
-		if (i == start)
-		{
-			new[i] == s[i];
-		}
-		else
-			return (0);
+		new[i - start] = s[i];
 		i++;
 	}
-	return (0);
+	new[i - start] = '\0';
+	return ((char *)new);
 }
