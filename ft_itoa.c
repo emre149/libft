@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:59:00 by ededemog          #+#    #+#             */
-/*   Updated: 2023/12/09 20:48:01 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/12/10 14:22:28 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,6 @@ static int	digits(long int nb)
 	return (len);
 }
 
-char	*malloc_cases(int n)
-{
-	char		*new;
-	int			len;
-	long int	nb;
-
-	len = digits(n);
-	nb = n;
-	if (nb == 0)
-	{
-		new = malloc(sizeof(char) * 2);
-		if (!new)
-			return (NULL);
-		new[0] = '0';
-		new[1] = '\0';
-		return (new);
-	}
-	else
-	{
-		new = malloc(sizeof(char) * (len + 1));
-		if (!new)
-			return (NULL);
-		new[len] = '\0';
-	}
-	return (0);
-}
-
 char	*ft_itoa(int n)
 {
 	char		*new;
@@ -68,8 +41,19 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	len = digits(n);
-	if (nb)
-		malloc_cases(nb);
+	if (nb == 0)
+	{
+		new = malloc(sizeof(char) * 2);
+		if (!new)
+			return (NULL);
+		new[0] = '0';
+		new[1] = '\0';
+		return (new);
+	}
+	new = malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	//new[len] = '\0';
 	else
 	{
 		if (nb < 0)
@@ -84,6 +68,7 @@ char	*ft_itoa(int n)
 			i--;
 			nb /= 10;
 		}
+		new[len] = '\0';
 	}
 	return (new);
 }
@@ -93,7 +78,7 @@ char	*ft_itoa(int n)
 
 int    main(void)
 {
-    int n = 0;
+    int n = 23;
 
     char *s = ft_itoa(n);
     printf("%s\n", s);

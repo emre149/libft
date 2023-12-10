@@ -6,7 +6,7 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:24:21 by ededemog          #+#    #+#             */
-/*   Updated: 2023/12/01 16:02:38 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/12/10 15:13:05 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char		*new;
+	char			*new;
 	unsigned int	i;
 	size_t			len_s;
-/*si len + start > strlen(s)
-	len = strlen(s) - start*/
+
 	if (!s)
 		return (NULL);
 	len_s = ft_strlen(s);
