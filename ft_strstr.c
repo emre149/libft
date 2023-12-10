@@ -6,9 +6,11 @@
 /*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:39:54 by ededemog          #+#    #+#             */
-/*   Updated: 2023/12/10 15:12:25 by ededemog         ###   ########.fr       */
+/*   Updated: 2023/12/10 15:20:15 by ededemog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strstr(char *haystack, char *needle)
 {
