@@ -12,16 +12,37 @@
 
 #include "libft.h"
 
+static int	ft_isspace(int c)
+{
+	if (c >= 0 && c < 32)
+		return (1);
+	else
+		return (0);
+}
+
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	while (s1[i])
-	{
-		if (s1[i] == (char *)set)
-		{
-			
-		}
-	}
+	size_t	begin;
+	size_t	end;
+	char	*ptr;
+
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	begin = 0;
+	end = ft_strlen(s1);
+	while (s1[begin] && ft_isspace(s1[begin]))
+		begin++;
+	while (ft_isspace(s1[end - 1]) && end > begin)
+		end--;
+	if (begin >= end)
+		return (ft_strdup(""));
+	ptr = malloc(sizeof(char) * (end - begin) + 1);
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s1 + begin, end - begin + 1);
+	return (ptr);
 }
+
 
 
 

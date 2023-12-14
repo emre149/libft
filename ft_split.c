@@ -12,6 +12,22 @@
 
 #include "libft.h"
 
+static int	safe_malloc(char **word_v, int pos, size_t buffer)
+{
+	int	i;
+
+	i = 0;
+	word_v[pos] = malloc(buffer);
+	if (NULL == word_v[pos])
+	{
+		while (i < pos)
+			free(word_v[i++]);
+		free(word_v);
+		return (1);
+	}
+	return (0);
+}
+
 static size_t	count_words(char const *s, char delimeter)
 {
 	size_t	words;
@@ -21,37 +37,39 @@ static size_t	count_words(char const *s, char delimeter)
 	i = 0;
 	while (s[i])
 	{
-		if ((i == 0 && s[i] != c) || (i > 0 && s[i] != c & s[i - 1] == c))
+		if ((i == 0 && s[i] != delimeter) || (i > 0 && s[i] != delimeter
+				& s[i - 1] == delimeter))
 			words++;
 		i++;
 	}
 	return (words);
 }
 
-int	fill(char **word_v, char const *s, char delimeter)
+static int	fill(char **word_v, char const *s, char delimeter)
 {
 	size_t	len;
-	size_t	i;
 	size_t	pos;
 
-	i = 0;
-	while (*s)
 	pos = 0;
-	len = 0;
-	while (s[i] == delimeter && s[i])
-		i++;
-	i = 0;
-	while (s[i] != delimeter && s[i])
+	while (*s)
 	{
-		++len;
-		++i;
+		len = 0;
+		while (*s == delimeter && *s)
+			++s;
+		while (*s != delimeter && *s)
+		{
+			++len;
+			++s;
+		}
+		if (len)
+		{
+			if (safe_malloc(word_v, pos, len + 1))
+				return (1);
+			ft_strlcpy(word_v[pos], s - len, len + 1);
+		}
+		++pos;
 	}
-	if (len)
-	{
-		if (safe_malloc(token_v, i, len + 1))
-			return (1);
-	}
-	ft_strlcpy(token_v[pos], s - len, len + 1);
+	return (0);
 }
 
 char	**ft_split(const char *s, char c)
@@ -60,12 +78,14 @@ char	**ft_split(const char *s, char c)
 	char	**word_v;
 
 	if (NULL == s)
-		return NULL;
+		return (NULL);
 	words = 0;
 	words = count_words(s, c);
-	token_v = malloc(sizeof(char *) * token + 1);
-	if (!token_v)
+	word_v = malloc((words + 1) * sizeof(char *));
+	if (!word_v)
 		return (NULL);
 	word_v[words] = NULL;
-	fill(word_v, s, c);
+	if (fill(word_v, s, c))
+		return (NULL);
+	return (word_v);
 }
