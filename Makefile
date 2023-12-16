@@ -6,7 +6,7 @@
 #    By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:53:33 by ededemog          #+#    #+#              #
-#    Updated: 2023/12/10 15:42:06 by ededemog         ###   ########.fr        #
+#    Updated: 2023/12/16 20:10:10 by ededemog         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ SRCS = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 		ft_strncmp.c ft_strmapi.c ft_memchr.c ft_memcmp.c ft_substr.c \
 		ft_striteri.c ft_itoa.c ft_strjoin.c ft_split.c ft_strtrim.c
 
-BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-			ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+			ft_lstmap.c
 
 MAIN	=	main.c
 
@@ -55,10 +56,10 @@ test:		$(NAME) bonus
 
 ifneq ($(shell uname), Darwin)
 breaker:
-			$(CC) -nostartfiles -shared -fPIC -ldl $(CFLAGS) -o libft.so $(SRCS)
+			$(CC) -nostartfiles -shared -fPIC -ldl $(CFLAGS) -o libft.so $(SRCS) $(BONUS)
 else
 breaker:
-			$(CC) -dynamiclib $(CFLAGS) -o libft.so $(SRCS) -L../obj -lmalloc
+			$(CC) -dynamiclib $(CFLAGS) -o libft.so $(SRCS) $(BONUS) -L../obj -lmalloc
 endif
 
 all:		$(NAME)
