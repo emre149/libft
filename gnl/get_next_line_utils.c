@@ -3,31 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:58:19 by ededemog          #+#    #+#             */
-/*   Updated: 2025/02/07 11:58:21 by ededemog         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 04:00:29 by ededemog          #+#    #+#             */
-/*   Updated: 2024/02/03 18:26:06 by ededemog         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:18:53 by emre149          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	newline(t_list *stash)
+int	newline(t_glist *stash)
 {
 	int		i;
-	t_list	*current;
+	t_glist	*current;
 
 	if (stash == NULL)
 		return (0);
@@ -42,14 +30,14 @@ int	newline(t_list *stash)
 	return (0);
 }
 
-t_list	*ft_lstlast(t_list *list)
+t_glist	*ft_lstlast(t_glist *list)
 {
 	while (list && list->next)
 		list = list->next;
 	return (list);
 }
 
-void	line_allocation(char **line, t_list *stash)
+void	line_allocation(char **line, t_glist *stash)
 {
 	int	i;
 	int	len;
@@ -75,10 +63,10 @@ void	line_allocation(char **line, t_list *stash)
 
 /* Frees the entire stash. */
 
-void	free_stash(t_list *stash)
+void	free_stash(t_glist *stash)
 {
-	t_list	*current;
-	t_list	*next;
+	t_glist	*current;
+	t_glist	*next;
 
 	current = stash;
 	while (current)

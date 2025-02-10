@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 11:57:55 by ededemog          #+#    #+#             */
-/*   Updated: 2025/02/07 13:09:20 by ededemog         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 04:00:05 by ededemog          #+#    #+#             */
-/*   Updated: 2024/02/05 02:25:06 by ededemog         ###   ########.fr       */
+/*   Created: 2025/02/10 16:18:26 by emre149           #+#    #+#             */
+/*   Updated: 2025/02/10 16:18:32 by emre149          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +20,30 @@
 #  define BUFFER_SIZE 5
 # endif
 
-typedef struct sg_list
+typedef struct s_glist
 {
-	char			*content;
-	struct s_list	*next;
-}	tg_list;
+    char			*content;
+    struct s_glist	*next;
+}	t_glist;
 
 char	*get_next_line(int fd);
 
-void	read_to_stash(int fd, tg_list **stash);
+void	read_to_stash(int fd, t_glist **stash);
 
-tg_list	*ft_lstlast(tg_list *list);
+t_glist	*ft_lstlast(t_glist *list);
 
-int		newline(tg_list *stash);
+int		newline(t_glist *stash);
 
-void	stash_to_line(tg_list *stash, char **line);
+void	stash_to_line(t_glist *stash, char **line);
 
-void	line_allocation(char **line, tg_list *stash);
+void	line_allocation(char **line, t_glist *stash);
 
 int		ft_strlen(const char *str);
 
-void	add(t_list **stash, char *buf, int already_read);
+void	add(t_glist **stash, char *buf, int already_read);
 
-void	free_stash(t_list *stash);
+void	free_stash(t_glist *stash);
 
-void	clean(t_list **stash);
+void	clean(t_glist **stash);
 
 #endif

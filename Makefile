@@ -6,7 +6,7 @@
 #    By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:53:33 by ededemog          #+#    #+#              #
-#    Updated: 2025/02/10 15:59:54 by emre149          ###   ########.fr        #
+#    Updated: 2025/02/10 16:13:02 by emre149          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,25 @@ NAME = libft.a
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 EXEC = prog
-SRCS = basics/ft_atoi.c basics/ft_isalnum.c basics/ft_isalpha.c basics/ft_isascii.c basics/ft_isdigit.c \
-        basics/ft_isprint.c string/ft_strchr.c string/ft_strrchr.c string/ft_strlen.c basics/ft_tolower.c \
-        basics/ft_toupper.c string/ft_strdup.c basics/ft_putchar_fd.c basics/ft_putstr_fd.c \
-        basics/ft_putendl_fd.c string/ft_strlcpy.c memory/ft_bzero.c memory/ft_memset.c memory/ft_memcpy.c \
-        basics/ft_putnbr_fd.c memory/ft_memmove.c string/ft_strnstr.c string/ft_strlcat.c memory/ft_calloc.c \
-        string/ft_strncmp.c string/ft_strmapi.c memory/ft_memchr.c memory/ft_memcmp.c string/ft_substr.c \
-        string/ft_striteri.c string/ft_itoa.c string/ft_strjoin.c string/ft_split.c string/ft_strtrim.c \
-        maths/ft_atoll.c maths/ft_fibonnaci.c
-
-BONUS	=	list/ft_lstnew.c list/ft_lstadd_front.c list/ft_lstsize.c list/ft_lstlast.c \
-            list/ft_lstadd_back.c list/ft_lstdelone.c list/ft_lstclear.c list/ft_lstiter.c \
-            list/ft_lstmap.c
+SRCS = basics/ft_atoi.c basics/ft_isalnum.c basics/ft_isalpha.c \
+		basics/ft_isascii.c basics/ft_isdigit.c \
+        basics/ft_isprint.c string/ft_strchr.c string/ft_strrchr.c \
+		string/ft_strlen.c basics/ft_tolower.c \
+        basics/ft_toupper.c string/ft_strdup.c basics/ft_putchar_fd.c \
+		basics/ft_putstr_fd.c basics/ft_putendl_fd.c string/ft_strlcpy.c \
+		memory/ft_bzero.c memory/ft_memset.c memory/ft_memcpy.c \
+        basics/ft_putnbr_fd.c memory/ft_memmove.c string/ft_strnstr.c \
+		string/ft_strlcat.c memory/ft_calloc.c string/ft_strncmp.c \
+		string/ft_strmapi.c memory/ft_memchr.c memory/ft_memcmp.c \
+		string/ft_substr.c string/ft_striteri.c string/ft_itoa.c \
+		string/ft_strjoin.c string/ft_split.c string/ft_strtrim.c \
+        maths/ft_atoll.c maths/ft_fibonnaci.c list/ft_lstnew.c \
+		list/ft_lstadd_front.c list/ft_lstsize.c list/ft_lstlast.c \
+		list/ft_lstadd_back.c list/ft_lstdelone.c list/ft_lstclear.c \
+		list/ft_lstiter.c list/ft_lstmap.c gnl/get_next_line.c \
+		gnl/get_next_line_utils.c
 
 MAIN	=	main.c
-
-OBJB	=	$(BONUS:.c=.o)
 
 OBJM	=	$(MAIN:.c=.o)
 

@@ -6,13 +6,13 @@
 /*   By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:56:06 by ededemog          #+#    #+#             */
-/*   Updated: 2025/02/10 16:00:47 by emre149          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:14:52 by emre149          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void (*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
 	t_list	*element;

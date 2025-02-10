@@ -6,7 +6,7 @@
 /*   By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:46:28 by emre149           #+#    #+#             */
-/*   Updated: 2025/02/10 15:46:33 by emre149          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:15:36 by emre149          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void (*f)(void *), void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* GNL (Get Next Line) */
 char	*get_next_line(int fd);

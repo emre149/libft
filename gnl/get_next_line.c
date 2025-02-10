@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 04:00:18 by ededemog          #+#    #+#             */
-/*   Updated: 2025/02/07 11:57:40 by ededemog         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:18:53 by emre149          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_list	*stash = NULL;
+	static t_glist	*stash = NULL;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
@@ -35,7 +35,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-void	read_to_stash(int fd, t_list **stash)
+void	read_to_stash(int fd, t_glist **stash)
 {
 	char	*buf;
 	int		readed;
@@ -58,14 +58,14 @@ void	read_to_stash(int fd, t_list **stash)
 	}
 }
 
-void	add(t_list **stash, char *buf, int already_read)
+void	add(t_glist **stash, char *buf, int already_read)
 {
 	int		i;
-	t_list	*last_node;
-	t_list	*new_node;
+	t_glist	*last_node;
+	t_glist	*new_node;
 
 	i = 0;
-	new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_glist));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;
@@ -87,7 +87,7 @@ void	add(t_list **stash, char *buf, int already_read)
 	last_node->next = new_node;
 }
 
-void	stash_to_line(t_list *stash, char **line)
+void	stash_to_line(t_glist *stash, char **line)
 {
 	int	i;
 	int	j;
@@ -115,14 +115,14 @@ void	stash_to_line(t_list *stash, char **line)
 	(*line)[j] = '\0';
 }
 
-void	clean(t_list **stash)
+void	clean(t_glist **stash)
 {
-	t_list	*last_node;
-	t_list	*clean_node;
+	t_glist	*last_node;
+	t_glist	*clean_node;
 	int		i;
 	int		j;
 
-	clean_node = malloc(sizeof(t_list));
+	clean_node = malloc(sizeof(t_glist));
 	if (!stash || !clean_node)
 		return ;
 	clean_node->next = NULL;
