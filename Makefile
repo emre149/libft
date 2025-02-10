@@ -3,28 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ededemog <ededemog@student.42.fr>          +#+  +:+       +#+         #
+#    By: emre149 <emre149@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 15:53:33 by ededemog          #+#    #+#              #
-#    Updated: 2023/12/16 20:10:10 by ededemog         ###   ########.fr        #
+#    Updated: 2025/02/10 15:59:54 by emre149          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -g
 EXEC = prog
-SRCS = ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-		ft_isprint.c ft_strchr.c ft_strrchr.c ft_strlen.c ft_tolower.c \
-		ft_toupper.c ft_strdup.c ft_putchar_fd.c ft_putstr_fd.c \
-		ft_putendl_fd.c ft_strlcpy.c ft_bzero.c ft_memset.c ft_memcpy.c \
-		ft_putnbr_fd.c ft_memmove.c ft_strnstr.c ft_strlcat.c ft_calloc.c \
-		ft_strncmp.c ft_strmapi.c ft_memchr.c ft_memcmp.c ft_substr.c \
-		ft_striteri.c ft_itoa.c ft_strjoin.c ft_split.c ft_strtrim.c
+SRCS = basics/ft_atoi.c basics/ft_isalnum.c basics/ft_isalpha.c basics/ft_isascii.c basics/ft_isdigit.c \
+        basics/ft_isprint.c string/ft_strchr.c string/ft_strrchr.c string/ft_strlen.c basics/ft_tolower.c \
+        basics/ft_toupper.c string/ft_strdup.c basics/ft_putchar_fd.c basics/ft_putstr_fd.c \
+        basics/ft_putendl_fd.c string/ft_strlcpy.c memory/ft_bzero.c memory/ft_memset.c memory/ft_memcpy.c \
+        basics/ft_putnbr_fd.c memory/ft_memmove.c string/ft_strnstr.c string/ft_strlcat.c memory/ft_calloc.c \
+        string/ft_strncmp.c string/ft_strmapi.c memory/ft_memchr.c memory/ft_memcmp.c string/ft_substr.c \
+        string/ft_striteri.c string/ft_itoa.c string/ft_strjoin.c string/ft_split.c string/ft_strtrim.c \
+        maths/ft_atoll.c maths/ft_fibonnaci.c
 
-BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-			ft_lstmap.c
+BONUS	=	list/ft_lstnew.c list/ft_lstadd_front.c list/ft_lstsize.c list/ft_lstlast.c \
+            list/ft_lstadd_back.c list/ft_lstdelone.c list/ft_lstclear.c list/ft_lstiter.c \
+            list/ft_lstmap.c
 
 MAIN	=	main.c
 
@@ -36,42 +37,52 @@ TNAME	= 	test
 
 OBJS 	= 	$(SRCS:.c=.o)
 
-NAME	= 	libft.a
-
-CC		= 	clang
-CFLAGS	= 	-Wall -Wextra -Werror
-
 AR		= 	ar rc
 
 RM		= 	rm -f
 
 .c.o:
-			$(CC) $(CFLAGS) -o $(<:.c=.o) -c $<
+	@echo "🔨 Compiling $<..."
+	@$(CC) $(CFLAGS) -o $(<:.c=.o) -c $<
 
 $(NAME):	$(OBJS)
-			$(AR) $(NAME) $(OBJS)
+	@echo "📦 Creating archive $(NAME)..."
+	@$(AR) $(NAME) $(OBJS)
+	@echo "✅ Archive $(NAME) created!"
 
 test:		$(NAME) bonus
-			$(CC) $(CFLAGS) -o $(TNAME) $(MAIN) -L. -lft
+	@echo "🚀 Building test executable..."
+	@$(CC) $(CFLAGS) -o $(TNAME) $(MAIN) -L. -lft
+	@echo "✅ Test executable $(TNAME) created!"
 
 ifneq ($(shell uname), Darwin)
 breaker:
-			$(CC) -nostartfiles -shared -fPIC -ldl $(CFLAGS) -o libft.so $(SRCS) $(BONUS)
+	@echo "🔧 Building shared library for Linux..."
+	@$(CC) -nostartfiles -shared -fPIC -ldl $(CFLAGS) -o libft.so $(SRCS) $(BONUS)
+	@echo "✅ Shared library libft.so created!"
 else
 breaker:
-			$(CC) -dynamiclib $(CFLAGS) -o libft.so $(SRCS) $(BONUS) -L../obj -lmalloc
+	@echo "🔧 Building shared library for macOS..."
+	@$(CC) -dynamiclib $(CFLAGS) -o libft.so $(SRCS) $(BONUS) -L../obj -lmalloc
+	@echo "✅ Shared library libft.so created!"
 endif
 
 all:		$(NAME)
 
 bonus:		$(OBJB)
-			$(AR) $(NAME) $(OBJB)
+	@echo "🔨 Compiling bonus files..."
+	@$(AR) $(NAME) $(OBJB)
+	@echo "✅ Bonus files compiled and added to $(NAME)!"
 
 clean:
-			$(RM) $(OBJS) $(OBJM) $(OBJB)
+	@echo "🧹 Cleaning object files..."
+	@$(RM) $(OBJS) $(OBJM) $(OBJB)
+	@echo "✅ Object files cleaned!"
 
 fclean:		clean
-			$(RM) $(NAME) $(TNAME)
+	@echo "🧹 Cleaning all generated files..."
+	@$(RM) $(NAME) $(TNAME)
+	@echo "✅ All generated files cleaned!"
 
 re:			fclean all
 
